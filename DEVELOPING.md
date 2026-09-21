@@ -12,6 +12,25 @@ prek run --all-files
 
 `prek run --all-files` is the canonical check before you commit.
 
+## Local documentation browser
+
+[Zensical](https://zensical.org/) previews documents in `content/`. Dependencies are managed with [uv](https://docs.astral.sh/uv/).
+
+```bash
+uv sync
+uv run zensical serve
+```
+
+Open [http://localhost:8000](http://localhost:8000). The server rebuilds when files in `content/` change.
+
+To build a static site:
+
+```bash
+uv run zensical build
+```
+
+Output goes to `site/` (gitignored).
+
 ## Commits
 
 [Conventional Commits](https://www.conventionalcommits.org/) with required scopes. Allowed types and scopes: `.pre-commit-config.yaml` (`conventional-pre-commit` hook).

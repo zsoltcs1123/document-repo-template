@@ -13,15 +13,8 @@ A lightweight GitHub template for document-first repositories: markdown conventi
 
 ### Prerequisites
 
-- [Git](https://git-scm.com/)
 - [prek](https://github.com/j178/prek) — pre-commit compatible hook runner
-
-Install prek (pick one):
-
-```bash
-brew install prek          # macOS / Linux (Homebrew)
-cargo install prek         # Rust toolchain
-```
+- [uv](https://docs.astral.sh/uv/) — Python package manager (for the local doc browser)
 
 ### Setup
 
@@ -36,6 +29,13 @@ For an existing clone:
 ```bash
 prek install --hook-type commit-msg
 prek install
+uv sync
+```
+
+Preview documents locally:
+
+```bash
+uv run zensical serve
 ```
 
 ## Development
@@ -51,8 +51,10 @@ prek run conventional-pre-commit --hook-stage commit-msg --commit-msg-filename /
 
 ```
 your-project/
-├── content/               # Documents (rename or reorganize as needed)
+├── content/               # Documents (served by Zensical)
 ├── docs/                  # Repo guides and meta-documentation
+├── zensical.toml          # Local doc browser configuration
+├── pyproject.toml         # uv project file (Zensical dev dependency)
 ├── AGENTS.md              # Agent and document conventions
 └── DEVELOPING.md          # Commits and hooks
 ```
